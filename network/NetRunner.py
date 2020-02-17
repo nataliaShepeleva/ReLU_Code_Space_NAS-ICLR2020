@@ -111,6 +111,9 @@ class NetRunner:
             self.weight_path = os.path.join(self.experiment_path, "weight_logs", '{}_{}_{}_{}'.format(self.network_type, os.path.split(os.path.split(self.train_data_file)[0])[1], self.lr_mode, self.optimizer), '[{}]_[{}]_[{}]'.format(self.optimizer, self.lr, self.batch_size))
             if not os.path.exists(self.weight_path):
                 os.makedirs(self.weight_path)
+            self.plot_path = os.path.join(self.experiment_path, "plot_logs", '{}_{}_{}_{}'.format(self.network_type, os.path.split(os.path.split(self.train_data_file)[0])[1], self.lr_mode, self.optimizer), '[{}]_[{}]_[{}]'.format(self.optimizer, self.lr, self.batch_size))
+            if not os.path.exists(self.plot_path):
+                os.makedirs(self.plot_path)
             h5_file.close()
         else:
             h5_file = h5py.File(self.test_data_file, 'r')

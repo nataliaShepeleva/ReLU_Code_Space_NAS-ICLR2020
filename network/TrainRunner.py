@@ -85,6 +85,11 @@ class TrainRunner(NetRunner):
             if not os.path.exists(os.path.join(self.info_path, 'valid')):
                 os.makedirs(os.path.join(self.info_path, 'valid'))
 
+            if not os.path.exists(os.path.join(self.plot_path, 'train')):
+                os.makedirs(os.path.join(self.plot_path, 'train'))
+            if not os.path.exists(os.path.join(self.plot_path, 'valid')):
+                os.makedirs(os.path.join(self.plot_path, 'valid'))
+
             saver = tf.train.Saver(save_relative_paths=True, max_to_keep=10)
 
             self.graph_op.run()

@@ -8,6 +8,8 @@ import gc
 import ujson
 import numpy as np
 import umap
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 
@@ -84,3 +86,32 @@ def hamming_dist_interclass_all_step_by_step(filepath, mode, num_classes, ep, fc
 
     return X_tsne, lbl
 
+
+def plot_umap(filepath, plotpath, mode_list, epoch_list, num_classes, fc_layers):
+    for mode in mode_list:
+        for epoch in epoch_list:
+            for i_fc in range(len(fc_layers)):
+                umap, lbl = hamming_dist_interclass_all_step_by_step(filepath, mode, num_classes, epoch,
+                                                                                 i_fc, fc_layers)
+                sns.set_style('white')
+                sns.despine()
+                palette = sns.color_palette("bright", num_classes)
+                sns.scatterplot(umap[:, 0], umap[:, 1], hue=lbl, palette=palette, alpha=0.4)
+                plt.legend(title='classes', loc='center right', bbox_to_anchor=(1.15, 0.5), ncol=1)
+                plt.xticks([], [])
+                plt.yticks([], [])
+                plt.title('Autoencoder CIFAR10 2 classes {} fc-{}({}) epoch-{} "isomorphic" via UMAP'.format(mode, i_fc,
+                                                                                                             fc_layers[
+                                                                                                                 i_fc],
+                                                                                                             epoch + 1))
+                plt.tight_layout()
+                plt.savefig(os.path.join(plotpath,
+                                         '{}/Autoencoder_CIFAR10_{}_fc{}({})_epoch{}.png'.format(mode, mode, i_fc,
+                                                                                                     fc_layers[i_fc],
+                                                                                                     epoch)), dpi=400)
+                plt.clf()
+                plt.close()
+                del umap
+                del lbl
+                gc.collect()
+                print('done')

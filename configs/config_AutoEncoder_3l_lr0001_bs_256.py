@@ -13,13 +13,13 @@ def load_config():
     config.training_mode = True
     config.image_size = [28, 28, 1]
 
-    config.train_data_file = 'datasets/MNIST/MNIST_resized(28x28).hdf5_train'
-    config.valid_data_file = 'datasets/MNIST/MNIST_resized(28x28).hdf5_test'
-    config.test_data_file = 'datasets/MNIST/MNIST_resized(28x28).hdf5_test'
+    config.train_data_file = 'datasets/MNIST_on_two/MNIST_on_two_resized(28x28).hdf5_train'
+    config.valid_data_file = 'datasets/MNIST_on_two/MNIST_on_two_resized(28x28).hdf5_train'
+    config.test_data_file = 'datasets/MNIST_on_two/MNIST_on_two_resized(28x28).hdf5_test'
 
     config.lr = 0.1
     config.batch_size = 256
-    config.num_epochs = 400
+    config.num_epochs = 10
     config.num_classes = 10
     config.class_labels = [i for i in range(10)]
     config.num_filters = 64
