@@ -20,7 +20,7 @@ def load_config():
     config.lr = 0.1
     config.batch_size = 256
     config.num_epochs = 10
-    config.num_classes = 10
+    config.num_classes = 2
     config.class_labels = [i for i in range(10)]
     config.num_filters = 64
     config.nonlin = 'relu'
