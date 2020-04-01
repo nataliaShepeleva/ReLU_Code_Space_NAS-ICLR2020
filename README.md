@@ -1,6 +1,6 @@
 # ReLU Code Space: A Basis for Rating Network Quality Besides Accuracy
 
-Provided code can be used for hte purpose of reproducibility of the Autoencoder results described in the paper
+Provided code can be used for the purpose of reproducibility of the Autoencoder results described in the paper
 
 ## How to use the code:
 
